@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { program } from 'commander';
-
-program.option('-h, --help', 'display help for command');
+program.version('0.0.1');
+program.parse();
