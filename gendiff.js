@@ -3,27 +3,14 @@ import _ from 'lodash';
 import { program } from 'commander';
 import { readFileSync } from 'fs';
 import path from 'path';
-program
-  .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format <type>', 'output format')
-  .arguments('<filepath1> <filepath2>')
-  .version('0.0.1');
 
-program.parse();
+const gendiff = (file1, file2) => {
+  const file1ForReading = readFileSync(file1);
+  const file1json = JSON.parse(file1ForReading);
 
-// Приведение к объектам
+  const file2ForReading = readFileSync(file2);
+  const file2json = JSON.parse(file2ForReading);
 
-const args = program.args;
-
-const file1ForReading = readFileSync(path.resolve(args[0]));
-const file1json = JSON.parse(file1ForReading);
-
-const file2ForReading = readFileSync(path.resolve(args[1]));
-const file2json = JSON.parse(file2ForReading);
-
-// Сравнение двух объектов
-
-const gendiff = (file1json, file2json) => {
   let result = '';
 
   const keys1 = Object.keys(file1json);
@@ -55,4 +42,13 @@ const gendiff = (file1json, file2json) => {
   return `{\n${result}}`;
 };
 
-console.log(gendiff(file1json, file2json));
+program
+  .description('Compares two configuration files and shows a difference.')
+  .option('-f, --format <type>', 'output format')
+  .arguments('<filepath1> <filepath2>')
+  .action((filepath1, filepath2) => {
+    console.log(gendiff(filepath1, filepath2));
+  })
+  .version('0.0.1');
+
+program.parse();
