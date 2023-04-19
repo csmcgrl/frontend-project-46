@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+
 import _ from 'lodash';
 import { program } from 'commander';
 import { readFileSync } from 'fs';
-import path from 'path';
+//import path from 'path';
 
 const gendiff = (file1, file2) => {
   const file1ForReading = readFileSync(file1);
@@ -17,26 +18,18 @@ const gendiff = (file1, file2) => {
   const keys2 = Object.keys(file2json);
   const sortedUniqArrays = _.sortBy(_.uniq(keys1.concat(keys2)));
 
-  for (let key of sortedUniqArrays) {
+  for (const key of sortedUniqArrays) {
     if (file1json.hasOwnProperty(key) && file2json.hasOwnProperty(key)) {
       result =
         file1json[key] === file2json[key]
-          ? result + '  ' + key + ': ' + file1json[key] + '\n'
-          : result +
-            '- ' +
-            key +
-            ': ' +
-            file1json[key] +
-            '\n' +
-            '+ ' +
-            key +
-            ': ' +
-            file2json[key] +
-            '\n';
-    } else
+          ? `${result}  ${key}: ${file1json[key]}\n`
+          : `${result}- ${key}: ${file1json[key]}\n` +
+            `+ ${key}: ${file2json[key]}\n`;
+    } else {
       result = file1json.hasOwnProperty(key)
-        ? result + '- ' + key + ': ' + file1json[key] + '\n'
-        : result + '+ ' + key + ': ' + file2json[key] + '\n';
+        ? `${result}- ${key}: ${file1json[key]}\n`
+        : `${result}+ ${key}: ${file2json[key]}\n`;
+    }
   }
 
   return `{\n${result}}`;
