@@ -3,9 +3,8 @@
 import _ from 'lodash';
 import { program } from 'commander';
 import { readFileSync } from 'fs';
-//import path from 'path';
 
-const gendiff = (file1, file2) => {
+export const gendiff = (file1, file2) => {
   const file1ForReading = readFileSync(file1);
   const file1json = JSON.parse(file1ForReading);
 
@@ -42,6 +41,5 @@ program
   .action((filepath1, filepath2) => {
     console.log(gendiff(filepath1, filepath2));
   })
-  .version('0.0.1');
-
-program.parse();
+  .version('0.0.1')
+  .parse();
