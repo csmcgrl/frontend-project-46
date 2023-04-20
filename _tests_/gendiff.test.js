@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals';
-import { gendiff } from '../src/index.js';
+import gendiff from '../src/index.js';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -14,7 +14,6 @@ test('find differences', async () => {
   const file2 = getFixturePath('file2ToTest.json');
   const result =
     '{\n- follow: false\n- host: Daria\n+ host: Ivan\n+ proxy: 123.234.53.22\n  timeout: 50\n}';
-  const resultString = JSON.stringify(result);
   const difference = gendiff(file1, file2);
   expect(difference).toEqual(result);
 });

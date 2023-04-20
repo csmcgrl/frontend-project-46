@@ -1,0 +1,46 @@
+{
+  "ci_service": {
+    "branch": "main",
+    "build_identifier": "",
+    "build_url": "",
+    "commit_sha": "9c1d29d85de5dc249b4fd398d0b01c73a3245453",
+    "committed_at": 1681986379,
+    "name": ""
+  },
+  "environment": {
+    "gem_version": "",
+    "package_version": "",
+    "pwd": "/home/dariapost/www/frontend-project-46",
+    "prefix": "/home/dariapost/www/frontend-project-46",
+    "rails_root": "",
+    "reporter_version": "0.11.1",
+    "simplecov_root": ""
+  },
+  "git": {
+    "branch": "main",
+    "head": "9c1d29d85de5dc249b4fd398d0b01c73a3245453",
+    "committed_at": 1681986379
+  },
+  "covered_percent": 100,
+  "covered_strength": 0,
+  "line_counts": {
+    "missed": 0,
+    "covered": 14,
+    "total": 14
+  },
+  "source_files": [
+    {
+      "blob_id": "d671f12bb95d648e6e446655052f4d3bd82511e2",
+      "coverage": "[null,null,null,null,1,1,1,null,1,1,null,1,null,1,1,1,null,1,4,2,null,null,null,null,null,2,null,null,null,null,null,1]",
+      "covered_percent": 100,
+      "covered_strength": 1.3571428571428572,
+      "line_counts": {
+        "missed": 0,
+        "covered": 14,
+        "total": 14
+      },
+      "name": "src/index.js"
+    }
+  ],
+  "repo_token": "9002e2f9022e63a5968158658ac03e2f373e75f9b923d172700c60576d90b950"
+}
