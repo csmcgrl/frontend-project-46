@@ -3,7 +3,10 @@
   "type": "module",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/csmcgrl/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/csmcgrl/frontend-project-46/actions)",
-  "main": "gendiff.js",
+  "bin": {
+    "genfiff": "bin/gendiff.js"
+  },
+  "main": "bin/gendiff.js",
   "scripts": {
     "test": "npx jest"
   },
