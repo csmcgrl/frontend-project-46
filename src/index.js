@@ -14,20 +14,15 @@ const gendiff = (file1, file2) => {
   const keys1 = Object.keys(file1json);
   const keys2 = Object.keys(file2json);
   const sortedUniqArrays = _.sortBy(_.uniq(keys1.concat(keys2)));
+  const hasProperty = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 
-  for (const key of sortedUniqArrays) {
-    if (file1json.hasOwnProperty(key) && file2json.hasOwnProperty(key)) {
-      result =
-        file1json[key] === file2json[key]
-          ? `${result}  ${key}: ${file1json[key]}\n`
-          : `${result}- ${key}: ${file1json[key]}\n` +
-            `+ ${key}: ${file2json[key]}\n`;
+  sortedUniqArrays.forEach((key) => {
+    if (hasProperty(file1json, key) && hasProperty(file2json, key)) {
+      result = file1json[key] === file2json[key] ? `${result}  ${key}: ${file1json[key]}\n` : `${result}- ${key}: ${file1json[key]}\n+ ${key}: ${file2json[key]}\n`;
     } else {
-      result = file1json.hasOwnProperty(key)
-        ? `${result}- ${key}: ${file1json[key]}\n`
-        : `${result}+ ${key}: ${file2json[key]}\n`;
+      result = hasProperty(file1json, key) ? `${result}- ${key}: ${file1json[key]}\n` : `${result}+ ${key}: ${file2json[key]}\n`;
     }
-  }
+  });
 
   return `{\n${result}}`;
 };
