@@ -1,22 +1,14 @@
-import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
-import path from 'path';
 
-const fileToParse = (file) => {
-  const fileForReading = readFileSync(file, 'utf8');
+const fileToParse = (file, extname) => {
   let parsedFile;
-  switch (path.extname(file)) {
+  switch (extname) {
     case '.json':
-      parsedFile = JSON.parse(fileForReading);
+      parsedFile = JSON.parse(file);
       break;
     case '.yml':
-      parsedFile = yaml.load(fileForReading, 'utf8');
+      parsedFile = yaml.load(file, 'utf8');
       break;
-    case '.yaml':
-      parsedFile = yaml.load(fileForReading, 'utf8');
-      break;
-    default:
-      throw new Error('Not supported format');
   }
 
   return parsedFile;
