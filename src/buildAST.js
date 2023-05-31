@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export const buildAST = (file1, file2) => {
+const buildAST = (file1, file2) => {
   const keys = _.union(_.keys(file1), _.keys(file2)).sort();
 
   return keys.map((key) => {
@@ -26,3 +26,5 @@ export const buildAST = (file1, file2) => {
     };
   });
 };
+
+export default buildAST;
