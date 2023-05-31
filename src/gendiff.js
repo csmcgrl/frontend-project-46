@@ -11,7 +11,7 @@ const getFileContent = (filename) => {
 
 const getFileExtname = (filepath) => path.extname(filepath);
 
-export const gendiff = (filepath1, filepath2) => {
+export default (filepath1, filepath2) => {
   const file1 = getFileContent(filepath1);
   const extname1 = getFileExtname(filepath1);
   const parsedFile1 = fileToParse(file1, extname1);
