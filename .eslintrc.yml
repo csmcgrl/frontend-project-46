@@ -18,9 +18,10 @@ rules:
   linebreak-style: 0
   arrow-body-style: ['error', 'as-needed']
   no-console: 0
-  import/extensions: # FIXME: remove when rule will be adjusted for new nodejs version
-    - error
-    - ignorePackages
-    - js: always
+  import/extensions: 0
+  # import/extensions: # FIXME: remove when rule will be adjusted for new nodejs version
+  #   - error
+  #   - ignorePackages
+  #   - js: always
   no-underscore-dangle: [2, { 'allow': ['__filename', '__dirname'] }]
   no-restricted-exports: ['error', { 'restrictedNamedExports': ['default'] }]
