@@ -11,7 +11,7 @@ const getFileContent = (filename) => {
 
 const getFileExtname = (filepath) => path.extname(filepath);
 
-export default gendiff = (filepath1, filepath2) => {
+const gendiff = (filepath1, filepath2) => {
   const file1 = getFileContent(filepath1);
   const extname1 = getFileExtname(filepath1);
   const parsedFile1 = fileToParse(file1, extname1);
@@ -23,3 +23,5 @@ export default gendiff = (filepath1, filepath2) => {
   const diffTree = buildAST(parsedFile1, parsedFile2);
   return getFormattedDiff(diffTree);
 };
+
+export default gendiff;

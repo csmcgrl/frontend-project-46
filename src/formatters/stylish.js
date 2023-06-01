@@ -12,9 +12,7 @@ const checkData = (data, depth) => {
   }
   const keys = Object.keys(data);
   let result = '';
-  for (const key of keys) {
-    result += `\n${countSpace(depth + 1)}${key}: ${checkData(data[key], depth + 1)}`;
-  }
+  keys.map((key) => (result += `\n${countSpace(depth + 1)}${key}: ${checkData(data[key], depth + 1)}`));
   return `{${result}\n${countSpace(depth)}}`;
 };
 
