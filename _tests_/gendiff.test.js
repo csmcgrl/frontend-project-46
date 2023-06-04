@@ -23,3 +23,11 @@ test('find differences between attached files yml', async () => {
   const difference = gendiff(file1, file2);
   expect(difference).toEqual(result);
 });
+
+test('show plain diff', async () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const plainDiff = gendiff(file1, file2, 'plain');
+  const result = readFileSync(getFixturePath('expectedPlain.txt'), 'utf8');
+  expect(plainDiff).toEqual(result);
+});

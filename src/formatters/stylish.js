@@ -29,6 +29,7 @@ const getformattedTree = (node) => {
         case 'deleted':
           result += `${countSpace(depth, '- ')}${obj.key}: ${checkData(obj.value, depth)}\n`;
           break;
+
         case 'unchanged':
           result += `${countSpace(depth)}${obj.key}: ${checkData(obj.value, depth)}\n`;
           break;
