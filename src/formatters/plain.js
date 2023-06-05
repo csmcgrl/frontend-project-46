@@ -9,7 +9,7 @@ const plainFormat = (tree, keys = '') => {
   let result = '';
 
   tree.forEach((obj) => {
-    let paths = [];
+    const paths = [];
     switch (obj.type) {
       case 'added':
         result += `Property '${keys}${obj.key}' was added with value: ${iter(obj.value)}\n`;
@@ -22,8 +22,8 @@ const plainFormat = (tree, keys = '') => {
         break;
       case 'nested':
         paths.push(obj.key);
-        let path = paths.join('.');
-        result += `${plainFormat(obj.children, `${keys}${path}.`)}\n`;
+        paths.join('.');
+        result += `${plainFormat(obj.children, `${keys}${paths}.`)}\n`;
         break;
       case 'unchanged':
         result += '';
