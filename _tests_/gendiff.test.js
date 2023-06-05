@@ -31,3 +31,11 @@ test('show plain diff', async () => {
   const result = readFileSync(getFixturePath('expectedPlain.txt'), 'utf8');
   expect(plainDiff).toEqual(result);
 });
+
+test('show json diff', async () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const jsonDiff = gendiff(file1, file2, 'json');
+  const result = readFileSync(getFixturePath('expectedJSON.txt'), 'utf8');
+  expect(jsonDiff).toEqual(result);
+});
