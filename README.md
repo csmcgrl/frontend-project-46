@@ -6,3 +6,4 @@
 [![gendiff utility example .json](https://asciinema.org/a/579057.png)](https://asciinema.org/a/579057)
 [![gendiff utility example .yml](https://asciinema.org/a/580571.png)](https://asciinema.org/a/580571)
 [![gendiff utility example for recursive structures](https://asciinema.org/a/588897.png)](https://asciinema.org/a/588897)
+[![gendiff utility example with plain format](https://asciinema.org/a/589715.png)](https://asciinema.org/a/589715)
