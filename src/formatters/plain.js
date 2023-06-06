@@ -9,7 +9,16 @@ const plainFormat = (tree, keys = '') => {
   let result = '';
 
   tree.forEach((obj) => {
-    const { type, key, value, oldValue, newValue, children } = obj;
+    // prettier-ignore
+    const {
+      type,
+      key,
+      value,
+      oldValue,
+      newValue,
+      children,
+    } = obj;
+
     const propertyPath = `${keys}${key}`;
 
     switch (type) {
