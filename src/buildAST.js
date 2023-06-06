@@ -18,12 +18,13 @@ const buildAST = (file1, file2) => {
     if (_.isEqual(value1, value2)) {
       return { key, type: 'unchanged', value: value1 };
     }
-    return {
+    const objStructure = {
       key,
       type: 'changed',
       oldValue: value1,
       newValue: value2,
     };
+    return objStructure;
   });
 };
 
