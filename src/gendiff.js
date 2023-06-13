@@ -1,11 +1,19 @@
 import { readFileSync } from 'fs';
-import path from 'path';
+import path, { dirname } from 'path';
 import fileToParse from './parsers.js';
 import buildAST from './buildAST.js';
 import chooseFormatter from './formatters/index.js';
+import { fileURLToPath } from 'url';
 
-const getFileContent = (filename) => {
-  const fullpath = path.resolve(process.cwd(), filename);
+const getFullPath = (filename) => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const fullpath = path.join(__dirname, '..', '__fixtures__', filename);
+  return fullpath;
+};
+
+export const getFileContent = (filename) => {
+  const fullpath = getFullPath(filename);
   return readFileSync(fullpath, 'utf-8');
 };
 

@@ -6,7 +6,7 @@
 
 # Description
 
-Console application "Difference Calculator" - a utility that determines the difference between two data structures represented as objects.
+Console application "Difference Calculator" is a utility that determines the difference between two data structures represented as objects.
 
 The program supports files with the extension .json, .yaml or .yml.
 Reports are generated in the form of a text message, structured output, or in json format.
@@ -66,9 +66,7 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]
 ```
 
-# Демонстрация
-
-Пример работы пакета:
+# Demonstration
 
 [![gendiff utility example .json](https://asciinema.org/a/579057.png)](https://asciinema.org/a/579057)
 [![gendiff utility example .yml](https://asciinema.org/a/580571.png)](https://asciinema.org/a/580571)
