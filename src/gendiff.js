@@ -1,9 +1,9 @@
 import { readFileSync } from 'fs';
 import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import fileToParse from './parsers.js';
 import buildAST from './buildAST.js';
 import chooseFormatter from './formatters/index.js';
-import { fileURLToPath } from 'url';
 
 const getFullPath = (filename) => {
   const __filename = fileURLToPath(import.meta.url);
