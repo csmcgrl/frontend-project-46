@@ -7,17 +7,18 @@ const formatValue = (data) => {
 
 const plainFormat = (tree, keys = '') => {
   const result = tree.reduce((accumulator, currentValue) => {
-    const { type, key, value, oldValue, newValue, children } = currentValue;
-    const propertyPath = `${keys}${key}`;
-    switch (type) {
+    // const { type, key, value, oldValue, newValue, children } = currentValue;
+
+    const propertyPath = `${keys}${currentValue.key}`;
+    switch (currentValue.type) {
       case 'added':
-        return `${accumulator}Property '${propertyPath}' was added with value: ${formatValue(value)}\n`;
+        return `${accumulator}Property '${propertyPath}' was added with value: ${formatValue(currentValue.value)}\n`;
       case 'deleted':
         return `${accumulator}Property '${propertyPath}' was removed\n`;
       case 'changed':
-        return `${accumulator}Property '${propertyPath}' was updated. From ${formatValue(oldValue)} to ${formatValue(newValue)}\n`;
+        return `${accumulator}Property '${propertyPath}' was updated. From ${formatValue(currentValue.oldValue)} to ${formatValue(currentValue.newValue)}\n`;
       case 'nested':
-        return `${accumulator}${plainFormat(children, `${propertyPath}.`)}\n`;
+        return `${accumulator}${plainFormat(currentValue.children, `${propertyPath}.`)}\n`;
       default:
         return accumulator;
     }
