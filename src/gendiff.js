@@ -6,10 +6,14 @@ import buildAST from './buildAST.js';
 import chooseFormatter from './formatters/index.js';
 
 const getFullPath = (filename) => {
-  console.log(filename);
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
-  const fullpath = path.join(__dirname, filename);
+  // console.log('Приходит файл' + filename);
+  // const __filename = fileURLToPath(import.meta.url);
+  // console.log('Фвйлнейм' + __filename);
+  // const __dirname = dirname('Дирнейм' + __filename);
+  // console.log(__dirname);
+  // const fullpath = path.join(__dirname, filename);
+  // console.log(fullpath);
+  const fullpath = path.resolve(process.cwd(), filename);
   console.log(fullpath);
   return fullpath;
 };
