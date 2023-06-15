@@ -6,9 +6,11 @@ import buildAST from './buildAST.js';
 import chooseFormatter from './formatters/index.js';
 
 const getFullPath = (filename) => {
+  console.log(filename);
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  const fullpath = path.join(__dirname, '..', '__fixtures__', filename);
+  const fullpath = path.join(__dirname, filename);
+  console.log(fullpath);
   return fullpath;
 };
 
