@@ -3,6 +3,7 @@ import plainFormat from './plain.js';
 import jsonFormat from './json.js';
 
 const chooseFormatter = (tree, formatName) => {
+  console.log(formatName);
   let format;
   switch (formatName) {
     case 'plain':
@@ -14,7 +15,7 @@ const chooseFormatter = (tree, formatName) => {
     case 'stylish':
       format = getFormattedDiff(tree);
       break;
-    case 'undefined':
+    case '':
       format = getFormattedDiff(tree);
       break;
     default:
