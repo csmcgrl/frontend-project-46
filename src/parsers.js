@@ -10,7 +10,7 @@ const fileToParse = (file, extname) => {
       parsedFile = yaml.load(file, 'utf8');
       break;
     default:
-      throw new Error('Unknown extension');
+      throw new Error(`Unknown extension - ${extname}`);
   }
 
   return parsedFile;

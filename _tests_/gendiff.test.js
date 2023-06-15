@@ -4,13 +4,13 @@ import { getFileContent } from '../src/gendiff.js';
 
 test('find differences between attached files json', async () => {
   const result = getFileContent('expected.txt');
-  const difference = gendiff('file1.json', 'file2.json');
+  const difference = gendiff('file1.json', 'file2.json', 'stylish');
   expect(difference).toEqual(result);
 });
 
 test('find differences between attached files yml', async () => {
   const result = getFileContent('expected.txt');
-  const difference = gendiff('file1.yml', 'file2.yml');
+  const difference = gendiff('file1.yml', 'file2.yml', 'stylish');
   expect(difference).toEqual(result);
 });
 
