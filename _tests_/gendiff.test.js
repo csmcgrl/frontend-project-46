@@ -25,6 +25,14 @@ test('find differences between attached files yml', async () => {
   expect(difference).toEqual(result);
 });
 
+test('find differences between attached files yaml', async () => {
+  const file1 = getFixturePath('file1.yaml');
+  const file2 = getFixturePath('file2.yaml');
+  const result = fs.readFileSync(getFixturePath('expected.txt'), 'utf8');
+  const difference = gendiff(file1, file2, 'stylish');
+  expect(difference).toEqual(result);
+});
+
 test('show plain diff', async () => {
   const file1 = getFixturePath('file1.json');
   const file2 = getFixturePath('file2.json');

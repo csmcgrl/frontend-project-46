@@ -9,6 +9,9 @@ const fileToParse = (file, extname) => {
     case '.yml':
       parsedFile = yaml.load(file, 'utf8');
       break;
+    case '.yaml':
+      parsedFile = yaml.load(file, 'utf8');
+      break;
     default:
       throw new Error(`Unknown extension - ${extname}`);
   }
