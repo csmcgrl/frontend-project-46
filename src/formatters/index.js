@@ -3,23 +3,17 @@ import plainFormat from './plain.js';
 import jsonFormat from './json.js';
 
 const chooseFormatter = (tree, formatName) => {
-  let format;
   switch (formatName) {
     case 'plain':
-      format = plainFormat(tree);
-      break;
+      return plainFormat(tree);
     case 'json':
-      format = jsonFormat(tree);
-      break;
+      return jsonFormat(tree);
     case 'stylish':
-      format = getFormattedDiff(tree);
-      break;
+      return getFormattedDiff(tree);
     case undefined:
-      format = getFormattedDiff(tree);
-      break;
+      return getFormattedDiff(tree);
     default:
       throw new Error(`Unknown format name - ${formatName}`);
   }
-  return format;
 };
 export default chooseFormatter;

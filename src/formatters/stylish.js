@@ -11,10 +11,7 @@ const checkData = (data, depth) => {
     return `${data}`;
   }
   const keys = Object.keys(data);
-  let result = '';
-  keys.forEach((key) => {
-    result += `\n${countSpace(depth + 1)}${key}: ${checkData(data[key], depth + 1)}`;
-  });
+  const result = keys.reduce((accumulator, currentValue) => `${accumulator}\n${countSpace(depth + 1)}${currentValue}: ${checkData(data[currentValue], depth + 1)}`, '');
   return `{${result}\n${countSpace(depth)}}`;
 };
 
@@ -28,21 +25,19 @@ const getformattedTree = (node) => {
   };
 
   const iter = (tree, depth = 1) => {
-    let result = '';
-    tree.forEach((obj) => {
+    const result = tree.reduce((accumulator, obj) => {
       const prefix = countSpace(depth, typeMapping[obj.type]);
       const value = checkData(obj.type === 'changed' ? obj.oldValue : obj.value, depth);
-
       if (obj.type === 'changed') {
         const newValue = checkData(obj.newValue, depth);
         const newValuePrefix = countSpace(depth, '+ ');
-        result += `${prefix}${obj.key}: ${value}\n${newValuePrefix}${obj.key}: ${newValue}\n`;
-      } else if (obj.type === 'nested') {
-        result += `${countSpace(depth)}${obj.key}: ${iter(obj.children, depth + 1)}\n`;
-      } else {
-        result += `${prefix}${obj.key}: ${value}\n`;
+        return `${accumulator}${prefix}${obj.key}: ${value}\n${newValuePrefix}${obj.key}: ${newValue}\n`;
       }
-    });
+      if (obj.type === 'nested') {
+        return `${accumulator}${countSpace(depth)}${obj.key}: ${iter(obj.children, depth + 1)}\n`;
+      }
+      return `${accumulator}${prefix}${obj.key}: ${value}\n`;
+    }, '');
 
     return `{\n${result}${countSpace(depth - 1)}}`;
   };

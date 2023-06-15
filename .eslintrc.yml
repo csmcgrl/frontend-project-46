@@ -35,3 +35,4 @@ rules:
         'ExportDeclaration': { 'multiline': true, 'consistent': true },
       },
     ]
+  implicit-arrow-linebreak: ['error', 'beside']
