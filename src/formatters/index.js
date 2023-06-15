@@ -14,6 +14,9 @@ const chooseFormatter = (tree, formatName) => {
     case 'stylish':
       format = getFormattedDiff(tree);
       break;
+    case '':
+      format = getFormattedDiff(tree);
+      break;
     default:
       throw new Error(`Unknown format name - ${formatName}`);
   }
