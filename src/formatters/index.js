@@ -3,7 +3,6 @@ import plainFormat from './plain.js';
 import jsonFormat from './json.js';
 
 const chooseFormatter = (tree, formatName) => {
-  console.log(formatName);
   let format;
   switch (formatName) {
     case 'plain':
