@@ -15,30 +15,17 @@ const jsonResult = fs.readFileSync(getFixturePath('expectedJSON.txt'), 'utf8');
 
 const extensions = ['json', 'yml', 'yaml'];
 
-test.each(extensions)('find differences between attached files (%s)', (ext) => {
-  const file1 = getFixturePath(`file1.${ext}`);
-  const file2 = getFixturePath(`file2.${ext}`);
-  const difference = gendiff(file1, file2, 'stylish');
-  expect(difference).toEqual(stylishResult);
-});
+test.each(extensions)('compare files and test different formatters (%s)', (ext) => {
+  const fileBefore = getFixturePath(`file1.${ext}`);
+  const fileAfter = getFixturePath(`file2.${ext}`);
 
-test.each(extensions)('show plain diff (%s)', (ext) => {
-  const file1 = getFixturePath(`file1.${ext}`);
-  const file2 = getFixturePath(`file2.${ext}`);
-  const difference = gendiff(file1, file2, 'plain');
-  expect(difference).toEqual(plainResult);
-});
+  const stylishDifference = gendiff(fileBefore, fileAfter, 'stylish');
+  const plainDifference = gendiff(fileBefore, fileAfter, 'plain');
+  const jsonDifference = gendiff(fileBefore, fileAfter, 'json');
+  const noFormatDifference = gendiff(fileBefore, fileAfter);
 
-test.each(extensions)('show json diff (%s)', (ext) => {
-  const file1 = getFixturePath(`file1.${ext}`);
-  const file2 = getFixturePath(`file2.${ext}`);
-  const difference = gendiff(file1, file2, 'json');
-  expect(difference).toEqual(jsonResult);
-});
-
-test('no formatter specified', () => {
-  const file1 = getFixturePath('file1.json');
-  const file2 = getFixturePath('file2.json');
-  const difference = gendiff(file1, file2);
-  expect(difference).toEqual(stylishResult);
+  expect(stylishDifference).toEqual(stylishResult);
+  expect(plainDifference).toEqual(plainResult);
+  expect(jsonDifference).toEqual(jsonResult);
+  expect(noFormatDifference).toEqual(stylishResult);
 });

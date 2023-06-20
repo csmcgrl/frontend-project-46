@@ -7,8 +7,6 @@ const formatValue = (data) => {
 
 const plainFormat = (tree, keys = '') => {
   const result = tree.reduce((accumulator, currentValue) => {
-    // const { type, key, value, oldValue, newValue, children } = currentValue;
-
     const propertyPath = `${keys}${currentValue.key}`;
     switch (currentValue.type) {
       case 'added':
